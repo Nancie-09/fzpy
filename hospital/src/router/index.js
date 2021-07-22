@@ -4,6 +4,12 @@ import VueRouter from 'vue-router'
 import Login from '../components/Login.vue' 
 import Home from '../components/Home.vue' 
 import Welcome from '../components/Welcome.vue' 
+import Diagnosis from '../components/Diagnosis.vue'
+import Doctor from '../components/Doctor.vue'
+import Frequency from '../components/Frequency.vue'
+import Usage from '../components/Usage.vue'
+import Drug from '../components/Drug.vue'
+import Accout from '../components/Accout.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +28,12 @@ const routes = [
 		redirect: '/welcome',
 		children:[
 			{ path: '/welcome',	component: Welcome },
+			{ path: '/diagnosis', component: Diagnosis },
+			{ path: '/doctor', component: Doctor },
+			{ path: '/frequency', component: Frequency },
+			{ path: '/usage', component: Usage },
+			{ path: '/drug', component: Drug },
+			{ path: '/accout', component: Accout }
 		]
 	}
 ]

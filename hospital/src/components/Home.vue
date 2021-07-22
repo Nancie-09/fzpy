@@ -67,7 +67,7 @@
 				console.log(res);
 				if(res.flag!=200) 
 					return this.$message.error("读取菜单失败！");
-				this.menuList = res.menus;
+				this.menuList = res.menus.splice(0,4);
 				// window.sessionStorage.setItem("menus",this.menuList);
 			},
 			//保存导航的路径
