@@ -66,7 +66,7 @@
 				console.log(res);
 				if(res.flag!=200) 
 					return this.$message.error("读取菜单失败！");
-				this.menuList = res.menus.splice(4,1);
+				this.menuList = res.menus.splice(4,2);
 			},
 			//保存导航的路径
 			saveNavState(activePath){

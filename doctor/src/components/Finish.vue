@@ -25,9 +25,9 @@
 				<el-table-column label="申请药品" prop="drugNames"></el-table-column>
 				<el-table-column label="申请时间" prop="createTime" :formatter="getLastDate" width="160"></el-table-column>
 				<el-table-column label="状态" prop="consultStatus" :formatter="status" width="80"></el-table-column>
-				<el-table-column label="操作" width="120">
+				<el-table-column label="操作" width="120" @click.native.stop>
 					 <template slot-scope="scope">
-						<el-button type="primary"  @click="detail(scope.row)">查看处方</el-button>
+						<el-button type="primary"  @click.stop="detail(scope.row)">查看处方</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -139,50 +139,7 @@
 				<el-button type="primary" @click="detail(patientInfo)">查看处方</el-button>
 			</span>
 		</el-dialog>
-		<!-- 查看处方 -->
-		<el-dialog title="电子处方" :visible.sync="detailDialogVisible" width="40%" @close="detailDialogClose" center="">
-			<div>
-				<div class="prescrption-header">
-					<div>{{prescrption.org.orgName}}</div>
-					<div>处方笺</div>
-					<div class="prescrption-type">{{getTypeName()}}</div>
-				</div>
-				<div class="person-content">
-					<div>
-						<div>姓名 {{prescrption.person.name}}</div>
-						<div>性别 {{prescrption.person.sex}}</div>
-						<div>年龄 {{prescrption.person.age}}岁</div>
-						<div>日期 {{getFormatDate(prescrption.createTime)}}</div>
-					</div>
-					<div>
-						<div>身份证号 {{prescrption.person.identity}}</div>
-						<div>手机号 {{prescrption.person.phone}}</div>
-					</div>
-				</div>
-				<div class="drug-content">
-					<div class="drug-header">Rp</div>
-					<div class="drug-item" v-for="(item,index) in prescrption.drugs">
-						<div>
-							<div class="drug-item-name">{{item.drugName}}</div>
-							<div class="drug-item-usage">
-								用法：{{item.dose+item.doseUnit}}/次 {{item.frequencyName}} {{item.usageName}} 
-							</div>
-						</div>
-						<div>{{item.quantity+item.packUnit}}</div>
-					</div>
-					<div class="drug-prize">药费：<span>¥ {{getTotalPrice()}}</span> 元</div>
-				</div>
-				<div class="prescrption-footer">
-					<div class="doctor-content">
-						处方医师：{{prescrption.doctor.doctorName}}<br>
-						审核医师：<br>
-						发药医师：
-					</div>
-					<div>盖章：</div>
-				</div>
-				<div class="prescrption-tips">{{tips}}</div>
-			</div>
-		</el-dialog>
+		
 		
 	</div>
 </template>
@@ -289,7 +246,6 @@
 				this.detailConsultDialogVisible= false;
 			},
 			async detail(consult) {
-				this.detailConsult = consult;
 				const {data:res} = await this.$http.get("selectPrescriptionByConsult",{
 					params:{
 						consultId:consult.consultId

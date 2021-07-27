@@ -6,6 +6,7 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue' 
 import Accept from '../components/Accept.vue' 
 import Finish from '../components/Finish.vue' 
+import Password from '../components/Password.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,7 @@ const routes = [
 			{ path: '/welcome',	component: Welcome },
 			{ path: '/accept',	component: Accept },
 			{ path: '/finish',	component: Finish },
+			{ path: '/password',	component: Password },
 		]
 	}
 ]

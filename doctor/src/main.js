@@ -12,8 +12,7 @@ Vue.config.productionTip = false
 //挂载axios
 Vue.prototype.$http = axios
 //设置访问根路径
-// axios.defaults.baseURL = "http://47.102.159.24:9000"
-axios.defaults.baseURL = "http://localhost:9000"
+axios.defaults.baseURL = "http://47.102.159.24:9000"
 Vue.prototype.resetSetItem = function (key, newVal) {
    if (key === 'watchStorage') {
        // 创建一个StorageEvent事件
